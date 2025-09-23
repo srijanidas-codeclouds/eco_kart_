@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" />
+    <title>EcoKart — a small eco-friendly products store</title>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+<!-- Navbar -->
+<nav id="navbar" class="backdrop-blur-lg text-white px-8 py-3 font-semibold transition shadow-lg fixed w-full z-10 ">
+    <div class="container mx-auto flex items-center justify-center md:justify-between relative lg:px-12 lg:justify-center ">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-bold text-green-500 ">EcoKart.</a>
+
+        <!-- Nav Links -->
+        <div
+        id="menu"
+        class="absolute top-16 left-0 w-full bg-white/90 justify-center text-green-900 flex-col space-y-4 py-4 px-4 shadow-md rounded-lg transform scale-y-0 origin-top transition-transform duration-300 ease-in-out
+                md:relative md:top-0 md:flex md:flex-row md:space-y-0 md:space-x-6 md:scale-y-100 md:bg-transparent md:shadow-none md:py-0 md:text-green-600"
+        >
+        <a href="index.html" id="nav-home" class="block text-center p-1 text-white hover:text-green-400">Home</a>
+        <a href="product.html" id="nav-products" class="block text-center p-1 text-white hover:text-green-400">Products</a>
+        <a href="#about" id="nav-about" class="block text-center p-1 text-white hover:text-green-400">About</a>
+        <a href="#contact" id="nav-contact" class="block text-center p-1 text-white hover:text-green-400">Contact</a>
+        </div>
+
+        <!-- Tablet Search Bar (always visible on md, hidden on mobile) -->
+        <div class="hidden md:flex flex-1 justify-center px-6 max-w-md">
+  <div
+    class="w-full flex items-center border-2 border-green-400 text-green-600 rounded-full px-4 py-2 shadow-inner transition-colors duration-300 hover:border-green-700 focus-within:border-green-700"
+  >
+    <input
+      type="text"
+      placeholder="Search products..."
+      class="flex-1 bg-transparent text-green-600 placeholder-green-400 focus:outline-none"
+    />
+    <button>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-green-400">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+
+        <!-- Icons -->
+        <div class="flex items-center space-x-4 ml-auto md:ml-0">
+        <!-- Mobile Search Icon -->
+        <button id="search-btn" class="md:hidden">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+            />
+            </svg>
+        </button>
+
+        <!-- Cart Icon -->
+        <a href="cart.html" id="cart-btn" class="relative">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"     
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M9 21h6"
+            />
+            </svg>
+            <span id="cart-badge" class="hidden absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
+        0
+      </span>
+        </a>
+
+        <!-- User Icon -->
+        <button>
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5.121 17.804A9.953 9.953 0 0 0 12 20a9.953 9.953 0 0 0 6.879-2.196M15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+            />
+            </svg>
+        </button>
+
+        <!-- Hamburger Menu (Mobile + Tablet) -->
+        <button id="menu-btn" class="md:hidden focus:outline-none">
+            <svg
+            class="w-6 h-6 text-green-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+            />
+            </svg>
+        </button>
+        </div>
+    </div>
+
+    <!-- Mobile Search Bar (hidden initially) -->
+    <div id="mobile-search" class="hidden px-6 mt-3 md:hidden transition-all duration-300">
+  <div
+    class="w-full flex items-center border-2 border-green-600 text-green-600 rounded-full px-4 py-2 shadow-inner transition-colors duration-300 hover:border-green-700 focus-within:border-green-700"
+  >
+    <input
+      type="text"
+      placeholder="Search products..."
+      class="flex-1 bg-transparent text-green-600 placeholder-green-400 focus:outline-none"
+    />
+    <button>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-green-600">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+</nav>
+
+<!-- Hero Section with Carousel Image -->
+<section class="relative w-full shadow-inner">
+    <div class="carousel w-full min-h-[60vh] sm:h-[70vh] lg:h-[80vh]">
+        <!-- Slide 1 -->
+        <div id="slide1" class="carousel-item relative w-full">
+        <img src="/assets/hero-final.png" class="w-full object-cover" />
+        <div class="absolute inset-0 flex items-center justify-center px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+        <!-- Text Section -->
+        <div class="text-center lg:text-left text-white">
+          <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 [text-shadow:2px_2px_2px_rgba(0,0,0,0.5)]">
+            <span class="text-green-600">EcoKart.</span> - Shop sustainably, live consciously.
+          </h1>
+          <p class="text-base sm:text-lg md:text-xl italic mb-6 [text-shadow:2px_2px_2px_rgba(0,0,0,0.5)]">
+            Eco-friendly products for a greener tomorrow
+          </p>
+          <div class="flex justify-center lg:justify-start">
+            <a href="#products" 
+                class="bg-white/20 backdrop-blur-md border border-white/30 
+                        text-white px-6 py-3 rounded-lg font-semibold 
+                        hover:bg-white/30 transition shadow-lg">
+                Shop Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-end">
+            <!-- <a href="#slide4" class="btn btn-circle">❮</a> -->
+            <a href="#slide2" class="btn btn-circle">❯</a>
+        </div>
+        </div>
+        <!-- Slide 2 -->
+        <div id="slide2" class="carousel-item relative w-full">
+        <img src="/assets/hero2.jpg" class="w-full object-cover" />
+        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide1" class="btn btn-circle">❮</a>
+            <a href="#slide3" class="btn btn-circle">❯</a>
+        </div>
+        </div>
+        <!-- Slide 3 -->
+        <div id="slide3" class="carousel-item relative w-full ">
+        <img src="assets/hero6.jpg" class="w-full object-cover bg-black/30 " />
+        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide2" class="btn btn-circle">❮</a>
+            <a href="#slide4" class="btn btn-circle">❯</a>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section
+  class="relative block bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] 
+         -mt-12 mb-0 pt-12 pb-12 px-4 sm:px-6 lg:px-8
+         max-w-7xl mx-auto text-center 
+         box-border transition-all duration-150 ease-[cubic-bezier(0.455,0.03,0.515,0.955)]">
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- Feature 1 -->
+    <div class="flex flex-col items-center px-4">
+      <div class="text-4xl text-[#c] mb-4">
+        <i class="fa-solid fa-award"></i>
+      </div>
+      <h3 class="font-medium text-base sm:text-[15px] mb-2 text-[#111518]">Sustainable Products</h3>
+      <p class="text-[#3f4245] text-sm sm:text-[16px] leading-relaxed">
+        Shop with confidence knowing all our products are eco-friendly, responsibly sourced, and safe for the planet.
+      </p>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="flex flex-col items-center px-4">
+      <div class="text-4xl text-[#c] mb-4">
+        <i class="fa-solid fa-truck-fast"></i>
+      </div>
+      <h3 class="font-medium text-base sm:text-[15px] mb-2 text-[#111518]">Fast & Green Delivery</h3>
+      <p class="text-[#3f4245] text-sm sm:text-[16px] leading-relaxed">
+        Enjoy quick, reliable shipping with eco-conscious packaging, reducing waste and carbon footprint.
+      </p>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="flex flex-col items-center px-4">
+      <div class="text-4xl text-[#c] mb-4">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <h3 class="font-medium text-base sm:text-[15px] mb-2 text-[#111518]">Trusted Quality & Warranty</h3>
+      <p class="text-[#3f4245] text-sm sm:text-[16px] leading-relaxed">
+        All products come with a guarantee of quality, giving you peace of mind while supporting a sustainable lifestyle.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- New arrival section -->
+<section class="bg-[#cee8cc] py-[60px] px-6 md:px-[15px] mb-0 mt-12 rounded-none max-w-7xl mx-auto shadow-lg">
+  <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+    
+    <!-- Left: Product Image -->
+    <div class="md:w-1/2 flex justify-center">
+      <img src="assets/new-arrival.png" alt="New Arrival Product" class="max-w-sm md:max-w-md">
+    </div>
+
+    <!-- Right: Text Content -->
+    <div class="md:w-1/2 text-center md:text-left">
+      <p class="text-sm font-medium text-[red] mb-2 tracking-wide">
+        SAVE UP TO 70%
+      </p>
+      <h2 class="text-4xl md:text-5xl font-bold text-[#111518] mb-4 leading-snug">
+        New Arrival <br> Collection
+      </h2>
+      <p class="text-[#3f4245] text-base leading-relaxed mb-6">
+        In consequat, quam id sodales hendrerit, eros mi leo, nec lacinia risus neque tristique augue.
+      </p>
+      <a href="#"
+         class="inline-block bg-[#1D3400] text-white px-5 py-2.5 min-h-[40px] rounded-none font-medium hover:bg-[#7f715c] transition-colors duration-150">
+        Explore now
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Category section  -->
+<section class="max-w-7xl mx-auto px-6 md:px-[15px] lg:px-[px] py-12 mt-10 mb-0">
+  <h2 class=" text-2xl md:text-4xl font-bold text-center mb-10 text-[#111518]">Categories</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <!-- Clothing -->
+    <div class="relative rounded-lg shadow-lg overflow-hidden group cursor-pointer h-60 w-100%">
+      <img src="https://media.istockphoto.com/id/1422209464/photo/recycling-products-concept-organic-cotton-recycled-cloth-zero-waste-materials-environment.webp?a=1&b=1&s=612x612&w=0&k=20&c=EvhDICWSuMkP6ngbOyaMaZwiO1_Rmw2QTH6HoGOaVlw=" 
+           alt="Clothing" 
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500"></div>
+      <span class="absolute inset-0 flex items-center justify-center text-white text-lg md:text-xl font-semibold drop-shadow-lg">
+        Clothing
+      </span>
+    </div>
+
+    <!-- Home Decor -->
+    <div class="relative rounded-lg shadow-lg overflow-hidden group cursor-pointer h-60 w-100%">
+      <img src="https://media.istockphoto.com/id/1310297075/photo/green-living-room-with-vertical-garden-house-plants-beige-color-sofa-and-parquet-floor.webp?a=1&b=1&s=612x612&w=0&k=20&c=7txAZ8uH6_kk-5HCG9KqbC0GU9cfWBGnp-uUmmVysmk=" 
+           alt="Home Decor" 
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500"></div>
+      <span class="absolute inset-0 flex items-center justify-center text-white text-lg md:text-xl font-semibold drop-shadow-lg">
+        Home Decor
+      </span>
+    </div>
+
+    <!-- Electronics -->
+    <div class="relative rounded-lg shadow-lg overflow-hidden group cursor-pointer h-60 w-100%">
+      <img src="https://plus.unsplash.com/premium_photo-1729436833449-225649403fc0?w=800&auto=format&fit=crop&q=60" 
+           alt="Electronics" 
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500"></div>
+      <span class="absolute inset-0 flex items-center justify-center text-white text-lg md:text-xl font-semibold drop-shadow-lg">
+        Electronics
+      </span>
+    </div>
+
+    <!-- Skincare -->
+    <div class="relative rounded-lg shadow-lg overflow-hidden group cursor-pointer h-60 w-100%">
+      <img src="https://images.unsplash.com/photo-1751199484060-7845af711ec0?w=800&auto=format&fit=crop&q=60" 
+           alt="Skincare" 
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500"></div>
+      <span class="absolute inset-0 flex items-center justify-center text-white text-lg md:text-xl font-semibold drop-shadow-lg">
+        Skincare
+      </span>
+    </div>
+
+    <!-- Zero Waste -->
+    <!-- <div class="relative rounded-lg shadow-lg overflow-hidden group cursor-pointer h-30 sm:col-span-2">
+      <img src="https://plus.unsplash.com/premium_photo-1724534454173-85ad2a7dc935?w=800&auto=format&fit=crop&q=60" 
+           alt="Zero Waste" 
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500"></div>
+      <span class="absolute inset-0 flex items-center justify-center text-white text-lg md:text-xl font-semibold drop-shadow-lg">
+        Zero Waste
+      </span>
+    </div> -->
+  </div>
+</section>
+
+<!-- Trending Now Section -->
+<section id="products" class="py-[70px] px-6 md:px-[15px] mb-0 mt-12 rounded-none max-w-6xl mx-auto transition-all duration-150 ease-in-out relative">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-12 pb-12 border-b border-[#e0e5eb] md:grid-cols-1">
+    <h2 class="text-4xl md:text-4xl font-bold text-[#111518] leading-relaxed">
+      Trending Now
+    </h2>
+    <button
+      class="px-5 py-1.5 text-[15px] font-medium text-white bg-[#3f4245] hover:bg-[#000000] hover:text-white transition-colors duration-150"
+    >
+      Browse Shop →
+    </button>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Product Card -->
+    <div class="text-center">
+      <div class="bg-[#f4f4f5] p-4">
+        <img src="assets/bottle.png" alt="Reusable Water Bottle" class="mx-auto">
+      </div>
+      <h3 class="mt-4 font-medium text-[#3f4245]">Reusable Water Bottle</h3>
+      <p class="text-lg font-semibold text-[#111518]">$25.00</p>
+      <div class="flex justify-center text-yellow-500 mb-3">★★★★★</div>
+      <button class="bg-[#1D3400] text-white px-4 py-2 hover:bg-[#7f715c] transition duration-150">
+        Add to cart
+      </button>
+    </div>
+
+    <!-- Product Card -->
+    <div class="text-center">
+      <div class="bg-[#f4f4f5] p-4">
+        <img src="assets/lunch.png" alt="Organic Cotton Tote" class="mx-auto">
+      </div>
+      <h3 class="mt-4 font-medium text-[#3f4245]">Organic Cotton Tote</h3>
+      <p class="text-lg font-semibold text-[#111518]">$18.00</p>
+      <div class="flex justify-center text-yellow-500 mb-3">★★★★★</div>
+      <button class="bg-[#1D3400] text-white px-4 py-2 hover:bg-[#7f715c] transition duration-150">
+        Add to cart
+      </button>
+    </div>
+
+    <!-- Product Card with Discount -->
+    <div class="text-center relative">
+      <div class="bg-[#f4f4f5] p-4 relative">
+        <span class="absolute top-2 left-2 bg-[#111518] text-white text-xs px-2 py-1">15% OFF</span>
+        <img src="assets/notebook.png" alt="Bamboo Toothbrush Set" class="mx-auto">
+      </div>
+      <h3 class="mt-4 font-medium text-[#3f4245]">Toothbrush & Notebook Set</h3>
+      <p class="text-lg font-semibold text-[#111518]">
+        $12.00 <span class="line-through text-gray-500 text-sm">$14.00</span>
+      </p>
+      <div class="flex justify-center text-yellow-500 mb-3">★★★★★</div>
+      <button class="bg-[#1D3400] text-white px-4 py-2 hover:bg-[#7f715c] transition duration-150">
+        Add to cart
+      </button>
+    </div>
+
+    <!-- Product Card with Discount -->
+    <div class="text-center ">
+      <div class="bg-[#f4f4f5] p-4 relative">
+        <span class="absolute top-2 left-2 bg-[#111518] text-white text-xs px-2 py-1">10% OFF</span>
+        <img src="assets/lunch-box.png" alt="Eco-Friendly Lunchbox" class="mx-auto">
+      </div>
+      <h3 class="mt-4 font-medium text-[#3f4245]">Eco-Friendly Lunchbox</h3>
+      <p class="text-lg font-semibold text-[#111518]">
+        $22.00 <span class="line-through text-gray-500 text-sm">$24.50</span>
+      </p>
+      <div class="flex justify-center text-yellow-500 mb-3">★★★★★</div>
+      <button class="bg-[#1D3400] text-white px-4 py-2 hover:bg-[#7f715c] transition duration-150">
+        Add to cart
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products Section -->
+<section class="py-12 px-6 md:px-12 max-w-7xl mx-auto">
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-gray-200 pb-8">
+    <h2 class="text-4xl font-bold text-[#111518] mt-10 mb-4 md:mb-0">
+      Featured Products
+    </h2>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Product 1 -->
+    <div class="text-center">
+      <div class="bg-[#f4f4f5] p-4 rounded-lg">
+        <img src="assets/notebook.png" alt="Bamboo Toothbrush" class="mx-auto">
+      </div>
+      <h3 class="mt-4 font-medium text-[#3f4245]">Bamboo Toothbrush</h3>
+      <p class="text-lg font-semibold text-[#111518]">$5.99</p>
+      <button class="bg-[#1D3400] text-white px-4 py-2 mt-3 hover:bg-[#7f715c] transition duration-150">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="text-center">
+      <div class="bg-[#f4f4f5] p-4 rounded-lg">
+        <img src="assets/bottle.png" alt="Reusable Water Bottle" class="mx-auto">
+      </div>
+      <h3 class="mt-4 font-medium text-[#3f4245]">Reusable Water Bottle</h3>
+      <p class="text-lg font-semibold text-[#111518]">$15.99</p>
+      <button class="bg-[#1D3400] text-white px-4 py-2 mt-3 hover:bg-[#7f715c] transition duration-150">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Product 3 with Discount -->
+    <div class="text-center relative">
+      <div class="bg-[#f4f4f5] p-4 rounded-lg relative">
+        <span class="absolute top-2 left-2 bg-[#111518] text-white text-xs px-2 py-1">15% OFF</span>
+        <img src="assets/lunch.png" alt="Organic Cotton Tote" class="mx-auto">
+      </div>
+      <h3 class="mt-4 font-medium text-[#3f4245]">Organic Cotton Tote</h3>
+      <p class="text-lg font-semibold text-[#111518]">
+        $12.00 <span class="line-through text-gray-500 text-sm">$14.00</span>
+      </p>
+      <button class="bg-[#1D3400] text-white px-4 py-2 mt-3 hover:bg-[#7f715c] transition duration-150">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Product 4 with Discount -->
+    <div class="text-center relative">
+      <div class="bg-[#f4f4f5] p-4 rounded-lg relative">
+        <span class="absolute top-2 left-2 bg-[#111518] text-white text-xs px-2 py-1">10% OFF</span>
+        <img src="assets/lunch-box.png" alt="Eco-Friendly Lunchbox" class="mx-auto">
+      </div>
+      <h3 class="mt-4 font-medium text-[#3f4245]">Eco-Friendly Lunchbox</h3>
+      <p class="text-lg font-semibold text-[#111518]">
+        $22.00 <span class="line-through text-gray-500 text-sm">$24.50</span>
+      </p>
+      <button class="bg-[#1D3400] text-white px-4 py-2 mt-3 hover:bg-[#7f715c] transition duration-150">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <!-- View All Products Button -->
+  <div class="text-center mt-10">
+    <a href="#"
+       class="inline-block bg-[#3f4245] text-white px-6 py-2 rounded-none font-medium hover:bg-[#000000] transition-colors duration-150 mt-15">
+      View Products →
+    </a>
+  </div>
+</section>
+
+<!-- Blog Section -->
+<section class="container max-w-7xl mx-auto px-4 py-12 mt-10 mb-10">
+  <!-- Section Header -->
+  <div class="text-center mb-10">
+    <h2 class="text-4xl font-bold mb-2">Latest from Blog</h2>
+    <p class="text-gray-600">The freshest and most exciting news</p>
+  </div>
+
+  <!-- Blog Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Blog Card 1 -->
+    <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-xl transition duration-300">
+      <img src="https://plus.unsplash.com/premium_photo-1663051160994-39b75364de1e?w=800&auto=format&fit=crop&q=60" 
+           alt="Eco-Friendly Travel" 
+           class="w-full h-64 object-cover">
+      <div class="p-6">
+        <span class="uppercase text-xs text-gray-500 block mb-2">News, Useful</span>
+        <h3 class="text-xl font-semibold mb-2">How To Style A Console Table</h3>
+      </div>
+    </div>
+
+    <!-- Blog Card 2 -->
+    <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-xl transition duration-300">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&auto=format&fit=crop&q=60" 
+           alt="Sustainable Living" 
+           class="w-full h-64 object-cover">
+      <div class="p-6">
+        <span class="uppercase text-xs text-gray-500 block mb-2">News</span>
+        <h3 class="text-xl font-semibold mb-2">The Yinki Ilori colour explosion</h3>
+      </div>
+    </div>
+
+    <!-- Blog Card 3 -->
+    <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-xl transition duration-300">
+      <img src="https://plus.unsplash.com/premium_photo-1714023800317-77ac184687fb?w=800&auto=format&fit=crop&q=60" 
+           alt="Green Innovations" 
+           class="w-full h-64 object-cover">
+      <div class="p-6">
+        <span class="uppercase text-xs text-gray-500 block mb-2">News</span>
+        <h3 class="text-xl font-semibold mb-2">8 DIY Project Ideas to Make Your Home Shine</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="container max-w-7xl mx-auto px-4 py-12 mt-10 mb-20">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-xl transition duration-300">
+      <img src="https://images.unsplash.com/photo-1598827691375-140045b69f5d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzN8fGVjbyUyMGZyaWVuZGx5JTIwc2hvcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60" 
+           alt="About Us" 
+           class="w-full h-64 object-cover">
+    </div>
+    <div class="flex flex-col justify-center">
+      <h2 class="text-4xl font-bold mb-4">About Us</h2>
+      <p class="text-gray-700 mb-4">
+        At EcoKart, we are committed to providing eco-friendly products that help you lead a sustainable lifestyle. Our mission is to make it easy for you to shop consciously and reduce your environmental impact.
+      </p>
+      <a href="about.html"
+         class="bg-[#3f4245] text-white px-4 py-2 rounded-none font-medium hover:bg-[#000000] transition-colors duration-150">
+        Learn More →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Eco Statistics Banner -->
+<section class="bg-green-50 py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-6 text-center">EcoKart's Green Impact</h2>
+    <p class="text-center text-green-700 mb-8 max-w-2xl mx-auto">
+      Together, we've made a measurable difference in creating a greener, cleaner earth.
+    </p>
+
+    <!-- Scrollable Cards -->
+    <div class="flex space-x-6 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-green-400 scrollbar-track-green-100">
+      
+      <!-- Card 1 -->
+      <div class="flex-shrink-0 bg-white shadow-lg rounded-lg p-6 w-64 text-center">
+        <h3 class="text-3xl font-bold text-green-700">120K+</h3>
+        <p class="text-green-600 mt-2">Trees Planted</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="flex-shrink-0 bg-white shadow-lg rounded-lg p-6 w-64 text-center">
+        <h3 class="text-3xl font-bold text-green-700">250K+</h3>
+        <p class="text-green-600 mt-2">Products Recycled</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="flex-shrink-0 bg-white shadow-lg rounded-lg p-6 w-64 text-center">
+        <h3 class="text-3xl font-bold text-green-700">15K+</h3>
+        <p class="text-green-600 mt-2">Plastic Bottles Saved</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="flex-shrink-0 bg-white shadow-lg rounded-lg p-6 w-64 text-center">
+        <h3 class="text-3xl font-bold text-green-700">500+</h3>
+        <p class="text-green-600 mt-2">Eco Projects Funded</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="flex-shrink-0 bg-white shadow-lg rounded-lg p-6 w-64 text-center">
+        <h3 class="text-3xl font-bold text-green-700">1M+</h3>
+        <p class="text-green-600 mt-2">Kg Carbon Offset</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Testimonial section -->
+<section class="bg-white py-12 px-6 md:px-12 max-w-7xl mx-auto pb-12">
+  <h2 class="text-4xl font-bold text-center mb-10 text-[#111518]">What Our Customers Say</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Testimonial 1 -->
+    <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-xl transition duration-300">
+      <p class="text-gray-700 mb-4">"EcoKart has transformed the way I shop. Their eco-friendly products are top-notch, and I love knowing that I'm making a positive impact on the environment."</p>
+      <div class="flex items-center">
+        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Customer 1" class="w-12 h-12 rounded-full mr-4">
+        <div>
+          <p class="font-semibold text-[#111518]">John Doe</p>
+          <p class="text-sm text-gray-500">Verified Buyer</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-xl transition duration-300">
+      <p class="text-gray-700 mb-4">"As a busy professional, I appreciate EcoKart's eco-friendly products. They make my shopping experience enjoyable and sustainable."</p>
+      <div class="flex items-center">
+        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Customer 2" class="w-12 h-12 rounded-full mr-4">
+        <div>   
+          <p class="font-semibold text-[#111518]">Jane Smith</p>
+          <p class="text-sm text-gray-500">Verified Buyer</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-xl transition duration-300">
+      <p class="text-gray-700 mb-4">"I've been a loyal customer of EcoKart for years. Their products are always fresh and high-quality, making my shopping experience enjoyable and eco-conscious."</p>
+      <div class="flex items-center">   
+        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Customer 3" class="w-12 h-12 rounded-full mr-4">
+        <div>   
+          <p class="font-semibold text-[#111518]">Mike Johnson</p>
+          <p class="text-sm text-gray-500">Verified Buyer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer section -->
+<footer id="contact" class="bg-black text-gray-300 py-12">
+  <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    
+    <!-- Contact Us -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Contact us</h3>
+      <p class="mb-2">Phone: (+63) 555 1212</p>
+      <p class="mb-2">Fax: (+63) 555 0100</p>
+      <p class="mb-2">
+        Need help or have a question?<br>
+        Contact us at <a href="mailto:info@company.com" class="text-gray-400 hover:text-white">info@company.com</a>
+      </p>
+      <p>304 North Cardinal<br>St. Dorchester Center, MA 02124</p>
+    </div>
+
+    <!-- Account -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Account</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">Products</a></li>
+        <li><a href="#" class="hover:text-white">My Account</a></li>
+        <li><a href="#" class="hover:text-white">My Wishlist</a></li>
+        <li><a href="#" class="hover:text-white">My Cart</a></li>
+        <li><a href="#" class="hover:text-white">Sign In</a></li>
+        <li><a href="#" class="hover:text-white">Hot Offers</a></li>
+        <li><a href="#" class="hover:text-white">Checkout</a></li>
+      </ul>
+    </div>
+
+    <!-- Useful Links -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Useful Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">New Products</a></li>
+        <li><a href="#" class="hover:text-white">Best Sellers</a></li>
+        <li><a href="#" class="hover:text-white">Manufacturers</a></li>
+        <li><a href="#" class="hover:text-white">Supplies</a></li>
+        <li><a href="#" class="hover:text-white">Specials</a></li>
+        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Email Newsletter</h3>
+      <p class="mb-4">Subscribe to our newsletter and get 10% off your first purchase</p>
+      <form class="flex mb-4">
+        <input type="email" placeholder="Your email *" class="w-full px-3 py-2 rounded-l bg-white text-black focus:outline-none">
+        <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-r text-white">Subscribe</button>
+      </form>
+      <div class="flex space-x-4 text-gray-400 items-center justify-center sm:justify-start">
+        <i class="fa-brands fa-cc-visa text-2xl hover:text-white"></i>
+        <i class="fa-brands fa-cc-mastercard text-2xl hover:text-white mr-3 pr-8"></i>
+        <i class="fa-brands fa-cc-amex text-2xl hover:text-white mr-3 pl-3"></i>
+        <i class="fa-brands fa-cc-paypal text-2xl hover:text-white pl-6"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between text-gray-500 text-sm px-6">
+    <p>Copyright © 2025 EcoKart - Eco Friendly Store. All rights reserved.</p>
+    <div class="flex space-x-6 mt-4 md:mt-0">
+      <a href="#" aria-label="Meta" class="hover:text-white"><i class="fa-brands fa-meta text-xl"></i></a>
+      <a href="#" aria-label="Instagram" class="hover:text-white"><i class="fa-brands fa-instagram text-xl mr-3"></i></a>
+      <a href="#" aria-label="X" class="hover:text-white"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+    </div>
+  </div>
+</footer>
+<script src="/js/cart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

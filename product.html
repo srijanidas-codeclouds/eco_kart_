@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" /> -->
+    <title>EcoKart — a small eco-friendly products store</title>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+<!-- Navbar -->
+<nav id="navbar" class="backdrop-blur-lg text-white px-8 py-3 font-semibold transition shadow-lg fixed w-full z-10 ">
+    <div class="container mx-auto flex items-center justify-center md:justify-between relative lg:px-12 lg:justify-center ">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-bold text-green-500 ">EcoKart.</a>
+
+        <!-- Nav Links -->
+        <div
+        id="menu"
+        class="absolute top-16 left-0 w-full bg-white/90 justify-center text-green-900 flex-col space-y-4 py-4 px-4 shadow-md rounded-lg transform scale-y-0 origin-top transition-transform duration-300 ease-in-out
+                md:relative md:top-0 md:flex md:flex-row md:space-y-0 md:space-x-6 md:scale-y-100 md:bg-transparent md:shadow-none md:py-0 md:text-green-600"
+        >
+        <a href="index.html" class="block text-center p-1 text-green-600 hover:text-green-400">Home</a>
+        <a href="product.html" class="block text-center p-1 text-green-600 hover:text-green-400">Products</a>
+        <a href="about.html" class="block text-center p-1 text-green-600 hover:text-green-400">About</a>
+        <a href="#contact" class="block text-center p-1 text-green-600 hover:text-green-400">Contact</a>
+        </div>
+
+        <!-- Tablet Search Bar (always visible on md, hidden on mobile) -->
+        <div class="hidden md:flex flex-1 justify-center px-6 max-w-md">
+  <div
+    class="w-full flex items-center border-2 border-green-400 text-green-600 rounded-full px-4 py-2 shadow-inner transition-colors duration-300 hover:border-green-700 focus-within:border-green-700"
+  >
+    <input
+      type="text"
+      placeholder="Search products..."
+      class="flex-1 bg-transparent text-green-600 placeholder-green-400 focus:outline-none"
+    />
+    <button>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-green-400">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+
+        <!-- Icons -->
+        <div class="flex items-center space-x-4 ml-auto md:ml-0">
+        <!-- Mobile Search Icon -->
+        <button id="search-btn" class="md:hidden">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+            />
+            </svg>
+        </button>
+
+        <!-- Cart Icon -->
+        <a href="cart.html" class="relative">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"     
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M9 21h6"
+            />
+            </svg>
+            
+        </a>
+
+        <!-- User Icon -->
+        <button>
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5.121 17.804A9.953 9.953 0 0 0 12 20a9.953 9.953 0 0 0 6.879-2.196M15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+            />
+            </svg>
+        </button>
+
+        <!-- Hamburger Menu (Mobile + Tablet) -->
+        <button id="menu-btn" class="md:hidden focus:outline-none">
+            <svg
+            class="w-6 h-6 text-green-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+            />
+            </svg>
+        </button>
+        </div>
+    </div>
+
+    <!-- Mobile Search Bar (hidden initially) -->
+    <div id="mobile-search" class="hidden px-6 mt-3 md:hidden transition-all duration-300">
+  <div
+    class="w-full flex items-center border-2 border-green-600 text-green-600 rounded-full px-4 py-2 shadow-inner transition-colors duration-300 hover:border-green-700 focus-within:border-green-700"
+  >
+    <input
+      type="text"
+      placeholder="Search products..."
+      class="flex-1 bg-transparent text-green-600 placeholder-green-400 focus:outline-none"
+    />
+    <button>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-green-600">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+</nav>
+
+<section class="bg-white mt-15 pt-24 pb-12 mb-12">
+  <!-- Breadcrumb -->
+  <div class="container max-w-6xl mx-auto px-4 py-6 mb-6 text-[12px] text-gray-500 flex justify-center space-x-2">
+    <a href="index.html" class="font-bold text-green-600 hover:text-green-900">HOME</a> / 
+    <span class="text-gray-700 font-medium">PRODUCTS</span>
+  </div>
+
+  <!-- Page Title -->
+  <div class="container mx-auto px-6">
+    <h1 class="text-3xl font-bold mb-6">Eco-Friendly Products</h1>
+  </div>
+
+  <!-- Top bar -->
+  <div class="container mx-auto px-6 flex items-center justify-between mb-8">
+    <p class="text-xs uppercase tracking-wide text-gray-600">Showing 10 results</p>
+    <select class="border px-3 py-2 text-sm rounded">
+      <option>Default sorting</option>
+      <option>Popularity</option>
+      <option>Latest</option>
+      <option>Price: low to high</option>
+      <option>Price: high to low</option>
+    </select>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+    <!-- Eco-friendly Bamboo Chair -->
+    <div class="border rounded overflow-hidden bg-white product-card">
+      <img src="https://via.placeholder.com/400x400?text=Bamboo+Chair" class="w-full h-64 object-cover" alt="Bamboo Chair">
+      <div class="p-4 text-center">
+        <h3 class="font-medium mb-1">Bamboo Lounge Chair</h3>
+        <p class="text-sm mb-3">$120.00</p>
+        <button class="bg-[#1D3400] text-white px-4 py-2 hover:bg-[#7f715c] transition duration-150">Add to cart</button>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+<!-- Footer section -->
+<footer id="contact" class="bg-black text-gray-300 py-12">
+  <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    
+    <!-- Contact Us -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Contact us</h3>
+      <p class="mb-2">Phone: (+63) 555 1212</p>
+      <p class="mb-2">Fax: (+63) 555 0100</p>
+      <p class="mb-2">
+        Need help or have a question?<br>
+        Contact us at <a href="mailto:info@company.com" class="text-gray-400 hover:text-white">info@company.com</a>
+      </p>
+      <p>304 North Cardinal<br>St. Dorchester Center, MA 02124</p>
+    </div>
+
+    <!-- Account -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Account</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">Products</a></li>
+        <li><a href="#" class="hover:text-white">My Account</a></li>
+        <li><a href="#" class="hover:text-white">My Wishlist</a></li>
+        <li><a href="#" class="hover:text-white">My Cart</a></li>
+        <li><a href="#" class="hover:text-white">Sign In</a></li>
+        <li><a href="#" class="hover:text-white">Hot Offers</a></li>
+        <li><a href="#" class="hover:text-white">Checkout</a></li>
+      </ul>
+    </div>
+
+    <!-- Useful Links -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Useful Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">New Products</a></li>
+        <li><a href="#" class="hover:text-white">Best Sellers</a></li>
+        <li><a href="#" class="hover:text-white">Manufacturers</a></li>
+        <li><a href="#" class="hover:text-white">Supplies</a></li>
+        <li><a href="#" class="hover:text-white">Specials</a></li>
+        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Email Newsletter</h3>
+      <p class="mb-4">Subscribe to our newsletter and get 10% off your first purchase</p>
+      <form class="flex mb-4">
+        <input type="email" placeholder="Your email *" class="w-full px-3 py-2 rounded-l bg-white text-black focus:outline-none">
+        <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-r text-white">Subscribe</button>
+      </form>
+      <div class="flex space-x-4 text-gray-400 items-center justify-center sm:justify-start">
+        <i class="fa-brands fa-cc-visa text-2xl hover:text-white"></i>
+        <i class="fa-brands fa-cc-mastercard text-2xl hover:text-white mr-3 pr-8"></i>
+        <i class="fa-brands fa-cc-amex text-2xl hover:text-white mr-3 pl-3"></i>
+        <i class="fa-brands fa-cc-paypal text-2xl hover:text-white pl-6"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between text-gray-500 text-sm px-6">
+    <p>Copyright © 2025 EcoKart - Eco Friendly Store. All rights reserved.</p>
+    <div class="flex space-x-6 mt-4 md:mt-0">
+      <a href="#" aria-label="Meta" class="hover:text-white"><i class="fa-brands fa-meta text-xl"></i></a>
+      <a href="#" aria-label="Instagram" class="hover:text-white"><i class="fa-brands fa-instagram text-xl mr-3"></i></a>
+      <a href="#" aria-label="X" class="hover:text-white"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+    </div>
+  </div>
+</footer>
+<script src="/js/allProducts.js"></script>
+<script src="/js/cart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

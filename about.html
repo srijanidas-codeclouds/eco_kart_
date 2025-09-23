@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — EcoKart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hero-bg { background-image: url('assets/hero-final.png'); background-size: cover; background-position: center; }
+    .team-photo { background-size: cover; background-position: center; }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased font-sans">
+
+ <!-- Navbar -->
+<nav id="navbar" class="fixed backdrop-blur-lg text-white px-8 py-3 font-semibold transition shadow-md w-full z-10">
+    <div class="container mx-auto flex items-center justify-center md:justify-between relative lg:px-12 lg:justify-center">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-bold text-green-500 ">EcoKart.</a>
+
+        <!-- Nav Links -->
+        <div
+        id="menu"
+        class="absolute top-16 left-0 w-full bg-white/90 backdrop-blur-lg justify-center text-green-900 flex-col space-y-4 py-4 px-4 shadow-md rounded-lg transform scale-y-0 origin-top transition-transform duration-300 ease-in-out
+                md:relative md:top-0 md:flex md:flex-row md:space-y-0 md:space-x-6 md:scale-y-100 md:bg-transparent md:shadow-none md:py-0 md:text-green-600"
+        >
+        <a href="index.html" class="block text-center p-1 text-green-600 hover:text-green-400">Home</a>
+        <a href="product.html" class="block text-center p-1 text-green-600 hover:text-green-400">Products</a>
+        <a href="#about" class="block text-center p-1 text-green-600 hover:text-green-400">About</a>
+        <a href="#contact" class="block text-center p-1 text-green-600 hover:text-green-400">Contact</a>
+        </div>
+
+        <!-- Tablet Search Bar (always visible on md, hidden on mobile) -->
+        <div class="hidden md:flex flex-1 justify-center px-6 max-w-md">
+  <div
+    class="w-full flex items-center border-2 border-green-400 text-green-600 rounded-full px-4 py-2 shadow-inner transition-colors duration-300 hover:border-green-700 focus-within:border-green-700"
+  >
+    <input
+      type="text"
+      placeholder="Search products..."
+      class="flex-1 bg-transparent text-green-600 placeholder-green-400 focus:outline-none"
+    />
+    <button>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-green-400">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+
+        <!-- Icons -->
+        <div class="flex items-center space-x-4 ml-auto md:ml-0">
+        <!-- Mobile Search Icon -->
+        <button id="search-btn" class="md:hidden">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+            />
+            </svg>
+        </button>
+
+        <!-- Cart Icon -->
+        <a href="cart.html" id="cart-btn" class="relative">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M9 21h6"
+            />
+            </svg>
+            <span id="cart-badge" class="hidden absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
+        0
+      </span>
+        </a>
+
+        <!-- User Icon -->
+        <button>
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6 text-green-400"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5.121 17.804A9.953 9.953 0 0 0 12 20a9.953 9.953 0 0 0 6.879-2.196M15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+            />
+            </svg>
+        </button>
+
+        <!-- Hamburger Menu (Mobile + Tablet) -->
+        <button id="menu-btn" class="md:hidden focus:outline-none">
+            <svg
+            class="w-6 h-6 text-green-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+            />
+            </svg>
+        </button>
+        </div>
+    </div>
+
+    <!-- Mobile Search Bar (hidden initially) -->
+    <div id="mobile-search" class="hidden px-6 mt-3 md:hidden transition-all duration-300">
+  <div
+    class="w-full flex items-center border-2 border-green-600 text-green-600 rounded-full px-4 py-2 shadow-inner transition-colors duration-300 hover:border-green-700 focus-within:border-green-700"
+  >
+    <input
+      type="text"
+      placeholder="Search products..."
+      class="flex-1 bg-transparent text-green-600 placeholder-green-400 focus:outline-none"
+    />
+    <button>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-green-600">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+</nav>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-24 md:py-32 text-white">
+    <div class="container mx-auto px-6">
+      <div class="bg-transpsarent p-8 rounded-md  md:mx-auto md:max-w-9xl ">
+        <!-- breadcrumb -->
+
+        <nav class="text-sm mb-10 " aria-label="Breadcrumb">
+          <ol class="list-reset flex uppercase text-gray-200">
+            <li><a href="index.html" class="hover:underline text-green-600">Home</a></li>
+            <li><span class="mx-2 text-gray-400">/</span></li>
+            <li class="text-white-700">About Us</li>
+          </ol>
+        </nav>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-green-600 ">About Us</h1>
+        <p class="mt-4 text-lg max-w-2xl text-white-900 italic">EcoKart – Building a Greener Future</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 -mt-12">
+    <div class="bg-white shadow-lg rounded-lg p-8">
+      <!-- About Section -->
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=60" alt="EcoKart Mission" class="rounded-lg shadow-md" />
+        </div>
+        <div>
+          <h2 class="text-2xl font-semibold mb-4">Our Mission</h2>
+          <p class="text-slate-700 leading-relaxed">At EcoKart, our mission is to make eco-friendly living accessible to everyone. We carefully curate sustainable products that reduce waste, protect nature, and inspire greener lifestyles.</p>
+          <p class="mt-4 text-slate-700 leading-relaxed">From biodegradable packaging to reusable alternatives, EcoKart is committed to offering choices that are good for people and the planet.</p>
+        </div>
+      </div>
+
+      <!-- Our Story -->
+      <div class="mt-12 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-xl font-semibold mb-3">Our Story</h3>
+          <p class="text-slate-700">EcoKart began as a small idea to fight plastic pollution and create a community where sustainability is the standard, not the exception. Today, we are proud to be a growing marketplace connecting eco-conscious buyers with responsible brands.</p>
+          <h4 class="mt-4 font-semibold">Sustainability at Heart</h4>
+          <p class="mt-2 text-slate-700">Every product we feature is thoughtfully selected for its positive environmental impact. Together with our partners, we are building a future where shopping is sustainable by default.</p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1598827691375-140045b69f5d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzN8fGVjbyUyMGZyaWVuZGx5JTIwc2hvcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="Our Story" class="rounded-lg shadow-md" />
+        </div>
+      </div>
+
+      <!-- Impact Counters Section -->
+        <section id="impact" class="py-12">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div>
+        <span class="block text-4xl font-bold text-green-600 counter" data-target="12450">0</span>
+        <p class="mt-2 text-gray-600">Plastic Bottles Saved</p>
+        </div>
+        <div>
+        <span class="block text-4xl font-bold text-green-600 counter" data-target="8200">0</span>
+        <p class="mt-2 text-gray-600">Kg Carbon Reduced</p>
+        </div>
+        <div>
+        <span class="block text-4xl font-bold text-green-600 counter" data-target="4500">0</span>
+        <p class="mt-2 text-gray-600">Eco Deliveries</p>
+        </div>
+        </div>
+        </section>
+
+      <!-- Team Section -->
+      <section class="mt-12">
+        <h3 class="text-2xl font-semibold mb-6">Meet Our Team</h3>
+        <p class="text-slate-600 mb-6">The people making EcoKart possible</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center p-4 border rounded-lg">
+            <div class="mx-auto w-28 h-28 rounded-full bg-gray-200 team-photo" style="background-image:url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=400&q=60')"></div>
+            <h5 class="mt-4 font-semibold">Srijani Das</h5>
+            <p class="text-sm text-slate-500">Founder</p>
+          </div>
+          <div class="text-center p-4 border rounded-lg">
+            <div class="mx-auto w-28 h-28 rounded-full bg-gray-200 team-photo" style="background-image:url('https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=400&q=60')"></div>
+            <h5 class="mt-4 font-semibold">Rahul Mehta</h5>
+            <p class="text-sm text-slate-500">Operations Lead</p>
+          </div>
+          <div class="text-center p-4 border rounded-lg">
+            <div class="mx-auto w-28 h-28 rounded-full bg-gray-200 team-photo" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=60')"></div>
+            <h5 class="mt-4 font-semibold">Ananya Roy</h5>
+            <p class="text-sm text-slate-500">Product Designer</p>
+          </div>
+          <div class="text-center p-4 border rounded-lg">
+            <div class="mx-auto w-28 h-28 rounded-full bg-gray-200 team-photo" style="background-image:url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=60')"></div>
+            <h5 class="mt-4 font-semibold">Arjun Kapoor</h5>
+            <p class="text-sm text-slate-500">Marketing Head</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <div class="mt-12 bg-gradient-to-r from-green-50 to-white p-8 rounded-lg flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h4 class="text-xl font-bold">Join the Green Movement</h4>
+          <p class="mt-2 text-slate-600 max-w-xl">Shop consciously, live sustainably. Discover eco-friendly products that make a real difference for the planet.</p>
+        </div>
+        <div>
+          <a href="#" class="inline-block px-6 py-3 bg-green-600 text-white rounded-lg shadow-md">Shop Now</a>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <section class="mt-12">
+        <h3 class="text-2xl font-semibold mb-6">What Our Customers Say</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 border rounded-lg">
+            <p class="text-slate-700">“EcoKart is my go-to for sustainable shopping. I feel good knowing every purchase supports the planet.”</p>
+            <div class="mt-4 flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=60" class="w-12 h-12 rounded-full" />
+              <div>
+                <h6 class="font-semibold">Priya Sharma</h6>
+                <p class="text-sm text-slate-500">Customer</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <p class="text-slate-700">“Affordable, eco-friendly, and stylish. EcoKart makes sustainable living easy.”</p>
+            <div class="mt-4 flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1545996124-1b0c9d6a3b23?auto=format&fit=crop&w=80&q=60" class="w-12 h-12 rounded-full" />
+              <div>
+                <h6 class="font-semibold">Amit Verma</h6>
+                <p class="text-sm text-slate-500">Customer</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <p class="text-slate-700">“EcoKart helped me switch to greener alternatives without compromising on quality.”</p>
+            <div class="mt-4 flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=80&q=60" class="w-12 h-12 rounded-full" />
+              <div>
+                <h6 class="font-semibold">Sneha Iyer</h6>
+                <p class="text-sm text-slate-500">Customer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="text-center py-16">
+        <h2 class="text-3xl font-bold mb-4 text-gray-600">Join the EcoKart Movement</h2>
+        <p class="text-green-600 mb-6">Be part of the change. Shop eco-friendly products today and make a difference.</p>
+        <a href="product.html" class="inline-block px-4 py-2 bg-[#1D3400] text-white font-semibold rounded-none shadow hover:bg-gray-500 transition duration-300 backdrop-blur-md bg-opacity-80">Start Shopping</a>
+       </section>
+    </div>
+   </main>
+
+    <!-- Footer section -->
+<footer id="contact" class="bg-black text-gray-300 py-12 mt-10">
+  <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    
+    <!-- Contact Us -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Contact us</h3>
+      <p class="mb-2">Phone: (+63) 555 1212</p>
+      <p class="mb-2">Fax: (+63) 555 0100</p>
+      <p class="mb-2">
+        Need help or have a question?<br>
+        Contact us at <a href="mailto:info@company.com" class="text-gray-400 hover:text-white">info@company.com</a>
+      </p>
+      <p>304 North Cardinal<br>St. Dorchester Center, MA 02124</p>
+    </div>
+
+    <!-- Account -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Account</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">Products</a></li>
+        <li><a href="#" class="hover:text-white">My Account</a></li>
+        <li><a href="#" class="hover:text-white">My Wishlist</a></li>
+        <li><a href="#" class="hover:text-white">My Cart</a></li>
+        <li><a href="#" class="hover:text-white">Sign In</a></li>
+        <li><a href="#" class="hover:text-white">Hot Offers</a></li>
+        <li><a href="#" class="hover:text-white">Checkout</a></li>
+      </ul>
+    </div>
+
+    <!-- Useful Links -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Useful Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">New Products</a></li>
+        <li><a href="#" class="hover:text-white">Best Sellers</a></li>
+        <li><a href="#" class="hover:text-white">Manufacturers</a></li>
+        <li><a href="#" class="hover:text-white">Supplies</a></li>
+        <li><a href="#" class="hover:text-white">Specials</a></li>
+        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div>
+      <h3 class="font-semibold text-green-400 mb-4">Email Newsletter</h3>
+      <p class="mb-4">Subscribe to our newsletter and get 10% off your first purchase</p>
+      <form class="flex mb-4">
+        <input type="email" placeholder="Your email *" class="w-full px-3 py-2 rounded-l bg-white text-black focus:outline-none">
+        <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-r text-white">Subscribe</button>
+      </form>
+      <div class="flex space-x-4 text-gray-400 items-center justify-center sm:justify-start">
+        <i class="fa-brands fa-cc-visa text-2xl hover:text-white"></i>
+        <i class="fa-brands fa-cc-mastercard text-2xl hover:text-white mr-3 pr-8"></i>
+        <i class="fa-brands fa-cc-amex text-2xl hover:text-white mr-3 pl-3"></i>
+        <i class="fa-brands fa-cc-paypal text-2xl hover:text-white pl-6"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between text-gray-500 text-sm px-6">
+    <p>Copyright © 2025 EcoKart - Eco Friendly Store. All rights reserved.</p>
+    <div class="flex space-x-6 mt-4 md:mt-0">
+      <a href="#" aria-label="Meta" class="hover:text-white"><i class="fa-brands fa-meta text-xl"></i></a>
+      <a href="#" aria-label="Instagram" class="hover:text-white"><i class="fa-brands fa-instagram text-xl mr-3"></i></a>
+      <a href="#" aria-label="X" class="hover:text-white"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Counter Animation Script -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+const counters = document.querySelectorAll('.counter');
+const speed = 150;
+
+
+const animateCounters = () => {
+counters.forEach(counter => {
+const updateCount = () => {
+const target = +counter.getAttribute('data-target');
+const count = +counter.innerText;
+const increment = Math.ceil(target / speed);
+
+
+if (count < target) {
+counter.innerText = count + increment;
+setTimeout(updateCount, 20);
+} else {
+counter.innerText = target;
+}
+};
+updateCount();
+});
+};
+
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+animateCounters();
+observer.disconnect();
+}
+});
+});
+
+
+observer.observe(document.querySelector('#impact'));
+});
+</script>
+<script src="js/cart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
