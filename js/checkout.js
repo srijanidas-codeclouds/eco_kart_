@@ -1,5 +1,6 @@
 // ====== Checkout Logic ======
 document.addEventListener("DOMContentLoaded", () => {
+  // Get DOM elements  
   const form = document.querySelector("form");
   const placeOrderBtn = document.getElementById("place-order");
   const orderItemsContainer = document.getElementById("order-items");

@@ -99,30 +99,36 @@
   </div>
 
   <!-- Product Section -->
-  <section class="container max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-    <div>
-      <img src="https://plus.unsplash.com/premium_photo-1664391909199-9af4d1fe9b99?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZWNvJTIwZnJpZW5kbHklMjBiYW1ib28lMjBjaGFpcnxlbnwwfHwwfHx8MA%3D%3D" alt="Eco-Friendly Bamboo Chair" class="w-full rounded-lg border">
-    </div>
-    <div class="flex flex-col justify-start">
-      <h1 class="text-2xl sm:text-3xl font-bold mb-2">Eco-Friendly Bamboo Chair</h1>
-      <p class="text-xl font-medium mb-6">$120.00</p>
+<section id="product-container" 
+         class="container max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 product-card"
+         data-product-id=""
+         data-stock=""
+         data-price="">
+  <div>
+    <img id="product-image" src="" alt="" class="w-full rounded-lg border">
+  </div>
+  <div class="flex flex-col justify-start">
+    <h1 id="product-name" class="text-2xl sm:text-3xl font-bold mb-2"></h1>
+    <p id="product-price" class="text-xl font-medium mb-6"></p>
 
-      <!-- Quantity + Add to cart -->
-      <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
-        <div class="flex items-center border rounded">
-          <button class="px-3 py-2 text-xl">−</button>
-          <input type="text" value="1" class="w-12 text-center border-x outline-none">
-          <button class="px-3 py-2 text-xl">+</button>
-        </div>
-        <button class="bg-[#1D3400] text-white px-6 py-2 hover:bg-black transition">
-          Add to cart
-        </button>
+    <!-- Quantity + Add to cart -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+      <div class="flex items-center border rounded">
+        <button class="qty-minus px-3 py-2 text-xl">−</button>
+        <input id="qty-input" type="number" value="1" class="w-12 text-center border-x outline-none">
+        <button class="qty-plus px-3 py-2 text-xl">+</button>
       </div>
-
-      <!-- Category -->
-      <p class="text-sm">CATEGORY: <span class="font-semibold uppercase">Home Decor</span></p>
+      <button class="add-to-cart bg-[#1D3400] text-white px-6 py-2 hover:bg-black transition">
+        Add to cart
+      </button>
     </div>
-  </section>
+
+    <!-- Category -->
+    <p class="text-sm">CATEGORY: <span id="product-category" class="font-semibold uppercase"></span></p>
+    <p id="product-description" class="mt-4 text-gray-700 text-sm leading-relaxed"></p>
+  </div>
+</section>
+
 
   <!-- Tabs -->
   <div class="container max-w-6xl mx-auto px-4 mt-12">
@@ -134,7 +140,7 @@
 
     <!-- Description -->
     <div id="content-description" class="py-6 text-gray-700 space-y-4 text-sm leading-relaxed">
-      <p>
+      <!-- <p>
         Our <strong>Eco-Friendly Bamboo Chair</strong> is crafted from 100% sustainably sourced bamboo, 
         designed to bring comfort and sustainability together in your living space.
       </p>
@@ -145,7 +151,7 @@
       <p>
         Perfect for eco-conscious homes, the bamboo chair is lightweight, durable, and 
         finished with non-toxic, natural oils to ensure both safety and sustainability.
-      </p>
+      </p> -->
     </div>
 
     <!-- Reviews -->
@@ -159,7 +165,7 @@
 
         <!-- Right: Review Form -->
         <div>
-          <h3 class="text-xl font-bold mb-4">Be the first to review “Eco-Friendly Bamboo Chair”</h3>
+          <!-- <h3 class="text-xl font-bold mb-4">Be the first to review “Eco-Friendly Bamboo Chair”</h3> -->
           <p class="text-sm text-gray-600 mb-4">
             Your email address will not be published. Required fields are marked <span class="text-red-500">*</span>
           </p>
@@ -297,6 +303,7 @@
     </div>
   </div>
 </footer>
+  <script src="/js/single-product.js"></script>
   <script src="/js/cart.js"></script>
   <script src="script.js"></script>
 
